@@ -1,13 +1,15 @@
 const express = require("express")
 const User = require("../models/user")
 const router = express.Router()
+const logger = console
 
 router.get("/", (req, res) => {
     try {
         const users = User.getUsers()
         res.send(users)
     } catch(err) {
-        res.status(401).send({message: err.message})
+        logger.error(err)
+        res.status(500).send({message: "Internal Server Error"})
     }
 })
 
