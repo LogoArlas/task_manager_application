@@ -2,8 +2,9 @@
 A simple web application for managing events and tasks.
 
 ## Features
-Users can create an account. 
-Events and tasks can be created and deleted.
-
+- Create an account for each user. 
+- Create events and tasks.
+- Each event can include a date, time, location, and description.
+- Users can include a description for each task.
 ## Entity Relationship Diagram
 ![Entity Realtionship Diagram for the task manager application](/public/images/Task_Manager_ER_Diagram.drawio.png)
