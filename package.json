@@ -1,0 +1,20 @@
+{
+  "name": "task_manager_application",
+  "version": "1.0.0",
+  "description": "A simple web application for managing events and tasks.",
+  "homepage": "https://github.com/LogoArlas/task_manager_application#readme",
+  "bugs": {
+    "url": "https://github.com/LogoArlas/task_manager_application/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LogoArlas/task_manager_application.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
