@@ -1,5 +1,5 @@
 # Task Manager Applicaton
-A simple web application for managing events and tasks.
+A simple web application for anybody who wants to manage events and tasks.
 
 ## Features
 - Create an account for each user. 
