@@ -15,7 +15,7 @@ const event = [
 ]
 
 function getEvent() {
-    return getEvent;
+    return event;
 }
 
 module.exports = { getEvent }

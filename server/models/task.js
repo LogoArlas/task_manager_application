@@ -8,7 +8,7 @@ const task = [
 ]
 
 function getTask() {
-    return getTask;
+    return task;
 }
 
 module.exports = { getTask }
