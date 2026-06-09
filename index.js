@@ -1,12 +1,19 @@
+
+require("dotenv").config()
+
 const express = require("express")
 const app = express()
 const path = require("path")
-
+const mongoose = require("mongoose")
 app.use(express.json())
 
 const userRoutes = require("./server/routes/user") //access routes in user
 const eventRoutes = require("./server/routes/event")
 const taskRoutes = require("./server/routes/task")
+
+mongoose.connect(process.env.dbURL)
+    .then(() => console.log("DB Connected!!"))
+    .catch(error => console.log(error));
 
 //CORS middleware
 app.use(function(req, res, next) {
