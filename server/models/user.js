@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const userSchema = new mongoose.Schema({
     username: {type: String, unique: true, required: true},
     password: {type: String, required: true},
-    email: String
+    email: {type: String}
 })
 
 //model of schema
@@ -18,8 +18,11 @@ async function register(username, password, email) {
     
     const newUser = await User.create({
         username: username,
-        password: password
+        password: password,
+        email: email
     })
+
+    return newUser._doc
 }
 //READ a user
 async function login(username, password) {
@@ -27,17 +30,13 @@ async function login(username, password) {
     if(!user) throw Error('User not found')
     if(user.password != password) throw Errow('Wrong Password')
 
-    return user
+    return user._doc
 }
 
 //UPDATE
-/*async function updatePassword(id, password) {
-    const user = await User.findByIdAndUpdate()
-}*/
-
 async function updatePassword(id, password) {
-    const user = await User.updateOne({"_id": id}, {$set: {}})
-    return user
+    const user = await User.findByIdAndUpdate(id, {password}, {new: true})
+    return user._doc
 }
 
 //DELETE
