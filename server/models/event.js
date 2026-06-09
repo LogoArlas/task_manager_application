@@ -1,5 +1,5 @@
 //fake database
-const event = [
+/*const event = [
     {
         eventName: "event",
         eventDate: {
@@ -18,4 +18,4 @@ function getEvent() {
     return event;
 }
 
-module.exports = { getEvent }
+module.exports = { getEvent }*/
