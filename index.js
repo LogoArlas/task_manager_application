@@ -7,9 +7,9 @@ const path = require("path")
 const mongoose = require("mongoose")
 app.use(express.json())
 
-const userRoutes = require("./server/routes/user") //access routes in user
-const eventRoutes = require("./server/routes/event")
-const taskRoutes = require("./server/routes/task")
+const userRoutes = require('./server/routes/user') //access routes in user
+const eventRoutes = require('./server/routes/event')
+const taskRoutes = require('./server/routes/task')
 
 mongoose.connect(process.env.dbURL)
     .then(() => console.log("DB Connected!!"))
@@ -26,9 +26,9 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname + "/public"))
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "/public", "index.html")))
 
-app.use("/user", userRoutes) //call to use fetch and make http requests
-app.use("/event", eventRoutes)
-app.use("/task", taskRoutes)
+app.use('/user', userRoutes) //call to use fetch and make http requests
+app.use('/event', eventRoutes)
+app.use('/task', taskRoutes)
 
 const PORT = process.env.PORT || 3000 //set a communication endpoint
 app.listen(PORT, () => console.log(`Server started on port ${PORT}!`)) //start server
