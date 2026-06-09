@@ -52,27 +52,3 @@ async function getUser(username) {
 
 //export function to access in routes
 module.exports = { register, login, updatePassword, deleteUser}
-
-//fake database for testing connection
-
-/*const users = [
-    {
-        username: "hello1",
-        password: "password"
-    },
-    {
-        username: "hello2",
-        password: "password",
-        email: "hello2@example.com"
-    },
-    {
-        username: "hello3",
-        password: "password"
-    }
-]
-
-function getUsers() {
-    return users;
-}
-
-module.exports = { getUsers }*/
