@@ -15,6 +15,7 @@ router
     .post('/register', async(req, res) => {
         try{
             const user = await User.register(req.body.username, req.body.password, req.body.email)
+            res.send({...user, password: undefined})
         } catch(error) {
             res.status(401).send({message: error.message})
         }
@@ -39,4 +40,4 @@ router
     })
 
 //export router to use in index.js
-module.exports = { router }
+module.exports = router
