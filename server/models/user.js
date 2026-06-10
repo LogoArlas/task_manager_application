@@ -13,8 +13,8 @@ const User = mongoose.model("User", userSchema)
 //CRUD functions on model
 //CREATE a user
 async function register(username, password, email) {
-    const user = getUser(username)
-    if(user[0]) throw Error('Username already in use')
+    const user = await getUser(username)
+    if(user) throw Error('Username already in use')
     
     const newUser = await User.create({
         username: username,
@@ -26,7 +26,7 @@ async function register(username, password, email) {
 }
 //READ a user
 async function login(username, password) {
-    const user = getUser(username)
+    const user = await getUser(username)
     if(!user) throw Error('User not found')
     if(user.password != password) throw Error('Wrong Password')
 
