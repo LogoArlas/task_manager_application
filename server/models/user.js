@@ -14,7 +14,7 @@ const User = mongoose.model("User", userSchema)
 //CREATE a user
 async function register(username, password, email) {
     const user = getUser(username)
-    if(user) throw Error('Username already in use')
+    if(user[0]) throw Error('Username already in use')
     
     const newUser = await User.create({
         username: username,
@@ -28,7 +28,7 @@ async function register(username, password, email) {
 async function login(username, password) {
     const user = getUser(username)
     if(!user) throw Error('User not found')
-    if(user.password != password) throw Errow('Wrong Password')
+    if(user.password != password) throw Error('Wrong Password')
 
     return user._doc
 }
