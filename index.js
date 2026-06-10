@@ -1,5 +1,7 @@
-
 require("dotenv").config()
+const SEVONE = process.env.SEVONE
+const SEVTWO = process.env.SEVTWO
+require("node:dns/promises").setServers([SEVONE, SEVTWO]);
 
 const express = require("express")
 const app = express()
