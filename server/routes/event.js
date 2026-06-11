@@ -3,7 +3,7 @@ const Event = require("../models/event")
 const router = express.Router()
 
 router
-    .post("/createEvent", (req, res) => {
+    .post("/createEvent", async (req, res) => {
       try {
           const event = await Event.createEvent(req.body.eventName, req.body.eventDate, req.body.eventTime, req.body.eventLocation,
           req.body.event.Description, req.body.userId)
@@ -13,7 +13,7 @@ router
       }
 })
 
-    .get('/getEvent', (req, res) => {
+    .get('/getEvent', async (req, res) => {
         try {
             const event = await Event.getEvent(req.body.eventName)
             res.send({...event, userId: undefined})
@@ -22,7 +22,7 @@ router
         }
     })
 
-    .put('/update', (req, res) => {
+    .put('/update', async (req, res) => {
         try {
             const event = await Event.updateEventLocation(req.body.id, req.body.eventLocation)
             res.send({...event, user: undefined})
@@ -31,7 +31,7 @@ router
         }
     })
 
-    .delete('/delete', (req, res) => {
+    .delete('/delete', async (req, res) => {
         try {
             await Event.deleteEvent(req.body.id)
             res.send({success: 'Event deleted'})
