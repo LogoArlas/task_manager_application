@@ -21,9 +21,9 @@ router
     }
 })
 
-    .put('/update', async (req, res) => {
+    .put('/updateTaskDescription', async (req, res) => {
     try {
-        const task = await Task.updateTaskName(req.body.id, req.body.eventName)
+        const task = await Task.updateTaskDescription(req.body.id, req.body.taskDescription)
         res.send(task)
     } catch(error) {
         res.status(401).send({message: error.message})
