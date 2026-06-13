@@ -7,11 +7,11 @@ const userSchema = new mongoose.Schema({
     email: {type: String}
 })
 
-//model of schema
+//model of userSchema
 const User = mongoose.model("User", userSchema)
 
 //CRUD functions on model
-//CREATE a user
+//CREATE a user document
 async function register(username, password, email) {
     const user = await getUser(username)
     if(user) throw Error('Username already in use')
@@ -22,9 +22,9 @@ async function register(username, password, email) {
         email: email
     })
 
-    return newUser._doc
+    return newUser._doc //return a document 
 }
-//READ a user
+//READ a user document
 async function login(username, password) {
     const user = await getUser(username)
     if(!user) throw Error('User not found')
@@ -33,13 +33,13 @@ async function login(username, password) {
     return user._doc
 }
 
-//UPDATE
+//UPDATE password of a user document
 async function updatePassword(id, password) {
-    const user = await User.findByIdAndUpdate(id, {password}, {new: true})
+    const user = await User.findByIdAndUpdate(id, {$set: {password: password}}, {returnDocument: 'after'})
     return user._doc
 }
 
-//DELETE
+//DELETE a user document
 async function deleteUser(id) {
     await User.deleteOne({"_id": id})
 }

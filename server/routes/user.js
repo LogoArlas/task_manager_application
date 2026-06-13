@@ -21,7 +21,7 @@ router
         }
     })
 
-    .put('/update', async(req, res) => {
+    .put('/updatePassword', async(req, res) => {
         try {
             const user = await User.updatePassword(req.body.id, req.body.password)
             res.send({...user, password: undefined})
