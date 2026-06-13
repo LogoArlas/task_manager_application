@@ -3,15 +3,16 @@ const mongoose = require("mongoose")
 const taskSchema = new mongoose.Schema({
     taskName: {type: String, unquie: true, required: true},
     taskDescription: {type: String},
-    userId: [
+    userId:[
         {type: mongoose.Schema.Types.ObjectId,
-        ref: "Event"
-    }]
+        ref: "User", required: true}]
 })
 
 const Task = mongoose.model("Task", taskSchema)
 
 async function createTask(taskName, taskDescription) {
+    const task = await getTask(taskName)
+    if(task) throw Error('Task name already in use')
     const newTask = await Task.create({
     taskName: taskName,
     taskDescription: taskDescription,
@@ -20,34 +21,28 @@ async function createTask(taskName, taskDescription) {
     return newTask._doc
 }
 
-async function getTask() {
-    if(!task) throw Error('Task not found')
-
-    return task._doc
+async function getTask(taskName) {
+    const userTask = await getTaskWithName(taskName)
+    if(userTask) {
+        return userTask._doc
+    } else {
+        throw Error('Task not found')
+    }
 }
 
-async function updateTaskName() {
-    const task = await Task.findByIdAndUpdate(id, {password}, {new: true})
+async function updateTaskDescription(id, taskDescription) {
+    const task = await Task.findByIdAndUpdate(id, {Description}, {new: true})
   return task._doc
-}
+}  
 
 async function deleteTask(id) {
   await Task.deleteOne({"_id": id})
 };
 
-module.export = { createTask, getTask, updateTaskName, deleteTask }
-
-//fake database
-/* const task = [
-    {
-        taskName: "task",
-        taskDescription: "This is a task description.",
-        userId: 1
-    }
-]
-
-function getTask() {
-    return task;
+async function getTaskWithName(taskName) {
+    const taskWithName = await Task.find({taskName: eventName}).populate('userId').exec();
+    console.log("Current user's task with requested name", taskWithName.userId.taskName);
+    return taskWithName.userId.taskName
 }
 
-module.exports = { getTask }*/
+module.export = { createTask, getTask, updateTaskDescription, deleteTask }
