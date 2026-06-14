@@ -4,7 +4,14 @@ const mongoose = require("mongoose")
 const userSchema = new mongoose.Schema({
     username: {type: String, unique: true, required: true},
     password: {type: String, required: true},
-    email: {type: String}
+    email: {type: String},
+    events: [
+        {type: mongoose.Schema.Types.ObjectId,
+        ref: "Event"}],
+    tasks: [
+        {type:mongoose.Schema.Types.ObjectId,
+        ref: "Task"}
+    ]
 })
 
 //model of userSchema
@@ -22,7 +29,7 @@ async function register(username, password, email) {
         email: email
     })
 
-    return newUser._doc //return a document 
+    return newUser._doc //return a document
 }
 //READ a user document
 async function login(username, password) {
@@ -48,6 +55,7 @@ async function deleteUser(id) {
 async function getUser(username) {
     return await User.findOne({"username": username})
 }
+
 
 //export function to access in routes
 module.exports = { register, login, updatePassword, deleteUser}
