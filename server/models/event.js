@@ -2,11 +2,7 @@ const mongoose = require("mongoose")
 
 const eventSchema = new mongoose.Schema({
     eventName: {type: String, required: true},
-    eventDate: {
-        month: {type: String},
-        day: {type: String},
-        year: {type: String}
-    },
+    eventDate: {type: String},
     eventTime: {type: String},
     eventLocation: {type: String},
     eventDescription: {type: String},
@@ -17,19 +13,15 @@ const eventSchema = new mongoose.Schema({
 const Event = mongoose.model("Event", eventSchema)
 
 //create an event document
-async function createUserEvent(eventName, month, day, year, eventTime, eventLocation, eventDescription, createdBy) {
+async function createUserEvent(eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy) {
 
     const newEvent = await Event.create({
         eventName: eventName,
-        eventDate: {
-            month: month,
-            day: day,
-            year: year
-        },
+        eventDate: eventDate,
         eventTime: eventTime,
         eventLocation: eventLocation,
         eventDescription: eventDescription,
-        createdBy: userId
+        createdBy: createdBy
     })
 
     return newEvent._doc
@@ -62,11 +54,7 @@ module.exports = { createUserEvent, getUserEvent, updateEventLocation, deleteEve
 /*const event = [
     {
         "eventName": "event1",
-        "eventDate": {
-            "month": "June",
-            "day": "4",
-            "year": "2026"
-        },
+        "eventDate": "June.4,2026",
         "eventTime": "12:00am",
         "eventLocation": "eventAddress",
         "eventDescription": "This is an event description.",

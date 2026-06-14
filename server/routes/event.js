@@ -5,7 +5,7 @@ const router = express.Router()
 router
     .post('/createUserEvent', async (req, res) => {
       try {
-          const event = await Event.createUserEvent(req.body.eventName, req.body.month, req.body.day, req.body.year,
+          const event = await Event.createUserEvent(req.body.eventName, req.body.eventDate,
           req.body.eventTime, req.body.eventLocation, req.body.eventDescription, req.body.createdBy)
           res.send(event)
       } catch(error) {
