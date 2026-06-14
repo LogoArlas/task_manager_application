@@ -1,37 +1,37 @@
 const mongoose = require("mongoose")
 
+//const createdBy = User._id
+
 const taskSchema = new mongoose.Schema({
-    taskName: {type: String, unquie: true, required: true},
+    taskName: {type: String, required: true},
     taskDescription: {type: String},
-    userId:[
+    createdBy:
         {type: mongoose.Schema.Types.ObjectId,
-        ref: "User", required: true}]
+        ref: "User"}
 })
 
 const Task = mongoose.model("Task", taskSchema)
 
-async function createTask(taskName, taskDescription) {
-    const task = await getTask(taskName)
-    if(task) throw Error('Task name already in use')
+async function createUserTask(taskName, taskDescription, createdBy) {
+
     const newTask = await Task.create({
     taskName: taskName,
     taskDescription: taskDescription,
-    userId: userId
+    createdBy: createdBy
     })
     return newTask._doc
 }
 
-async function getTask(taskName) {
-    const userTask = await getTaskWithName(taskName)
-    if(userTask) {
-        return userTask._doc
-    } else {
-        throw Error('Task not found')
-    }
+async function getUserTask(taskName, createdBy) {
+    const userTask = await Task.find({taskName: taskName, createdBy: createdBy}).exec()
+    if(!userTask) throw Error('Task not found')
+
+    return userTask._doc
+        
 }
 
 async function updateTaskDescription(id, taskDescription) {
-    const task = await Task.findByIdAndUpdate(id, {Description}, {new: true})
+    const task = await Task.findByIdAndUpdate(id, {$set: {taskDescription: taskDescription}}, {returnDocument: 'after'})
   return task._doc
 }  
 
@@ -39,10 +39,8 @@ async function deleteTask(id) {
   await Task.deleteOne({"_id": id})
 };
 
-async function getTaskWithName(taskName) {
-    const taskWithName = await Task.find({taskName: eventName}).populate('userId').exec();
-    console.log("Current user's task with requested name", taskWithName.userId.taskName);
-    return taskWithName.userId.taskName
+async function getAllTasks(createdBy) {
+    return await Task.findById({createdBy}).exec()
 }
 
-module.export = { createTask, getTask, updateTaskDescription, deleteTask }
+module.exports = { createUserTask, getUserTask, updateTaskDescription, deleteTask }

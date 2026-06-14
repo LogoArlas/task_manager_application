@@ -4,14 +4,7 @@ const mongoose = require("mongoose")
 const userSchema = new mongoose.Schema({
     username: {type: String, unique: true, required: true},
     password: {type: String, required: true},
-    email: {type: String},
-    events: [
-        {type: mongoose.Schema.Types.ObjectId,
-        ref: "Event"}],
-    tasks: [
-        {type:mongoose.Schema.Types.ObjectId,
-        ref: "Task"}
-    ]
+    email: {type: String}
 })
 
 //model of userSchema
@@ -58,4 +51,4 @@ async function getUser(username) {
 
 
 //export function to access in routes
-module.exports = { register, login, updatePassword, deleteUser}
+module.exports = { register, login, updatePassword, deleteUser }
