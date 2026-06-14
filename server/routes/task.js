@@ -1,20 +1,20 @@
 const express = require("express")
-const Task = require("../models/task")
+const Task = require('../models/task')
 const router = express.Router()
 
 router
-    .post('/createTask', async (req, res) => {
+    .post('/createUserTask', async (req, res) => {
     try {
-        const task = await Task.getTask(req.body.taskName, req.body.taskDescription, req.body.userId)
+        const task = await Task.createUserTask(req.body.taskName, req.body.taskDescription, req.body.createdBy)
         res.send(task)
     } catch(error) {
         res.status(401).send({message: error.message})
     }
 })
 
-    .get('/getTask', async (req, res) => {
+    .get('/getUserTask', async (req, res) => {
     try {
-        const task = await Task.getTask(req.body.taskName)
+        const task = await Task.getTask(req.body.taskName, req.body.createdBy)
         res.send(task)
     } catch(error) {
         res.status(401).send({message: error.message})
