@@ -28,7 +28,7 @@ async function createUserEvent(eventName, eventDate, eventTime, eventLocation, e
 }
 
 async function getUserEvent(eventName, createdBy) {
-    const userEvent = await Event.find({eventName: eventName, createdBy: createdBy})
+    const userEvent = await Event.find({eventName: eventName, createdBy: createdBy}).exec()
     if(!userEvent) throw Error('Event not found for current user')
     
     return userEvent._doc
