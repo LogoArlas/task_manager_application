@@ -22,16 +22,16 @@ router
         }
     })
 
-    .put('/updateEventLocation', async (req, res) => {
+    .put('/updateEventName', async (req, res) => {
         try {
-            const event = await Event.updateEventLocation(req.body.id, req.body.eventLocation)
+            const event = await Event.updateEventName(req.body.id, req.body.eventName)
             res.send(event)
         } catch(error) {
             res.status(401).send({message: error.message})
         }
     })
 
-    .delete('/delete', async (req, res) => {
+    .delete('/deleteEvent', async (req, res) => {
         try {
             await Event.deleteEvent(req.body.id)
             res.send({success: 'Event deleted'})
