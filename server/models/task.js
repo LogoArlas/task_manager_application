@@ -21,7 +21,7 @@ async function createUserTask(taskName, taskDescription, createdBy) {
 }
 
 async function getUserTask(taskName, createdBy) {
-    const userTask = await Task.find({taskName: taskName, createdBy: createdBy}).exec()
+    const userTask = await Task.find({"taskName": taskName, "createdBy": createdBy}).exec()
     if(!userTask) throw Error('Task not found')
 
     return userTask._doc

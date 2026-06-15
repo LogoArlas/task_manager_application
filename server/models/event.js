@@ -28,7 +28,7 @@ async function createUserEvent(eventName, eventDate, eventTime, eventLocation, e
 }
 
 async function getUserEvent(eventName, createdBy) {
-    const userEvent = await Event.find({eventName: eventName, createdBy: createdBy}).exec()
+    const userEvent = await Event.find({"eventName": eventName, "createdBy": createdBy}).exec()
     if(!userEvent) throw Error('Event not found for current user')
     
     return userEvent._doc
@@ -44,7 +44,7 @@ async function deleteEvent(id) {
 }
 
 async function getAllEvents(createdBy) {
-    const allEvents = await Event.find({createdby: createdBy})
+    const allEvents = await Event.find({"createdby": createdBy})
     return allEvents._doc
 }
 
