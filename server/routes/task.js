@@ -14,7 +14,7 @@ router
 
     .get('/getUserTask', async (req, res) => {
     try {
-        const task = await Task.getTask(req.body.taskName, req.body.createdBy)
+        const task = await Task.getUserTask(req.body.taskName, req.body.createdBy)
         res.send(task)
     } catch(error) {
         res.status(401).send({message: error.message})
@@ -30,9 +30,9 @@ router
     }
 })
 
-    .delete('/delete', async (req, res) => {
+    .delete('/deleteTask', async (req, res) => {
     try {
-        await Task.deleteEvent(req.body.id)
+        await Task.deleteTask(req.body.id)
         res.send({success: 'Task deleted'})
     } catch(error) {
         res.status(401).send({message: error.message})
