@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 
-//const createdBy = User._id
-
 const taskSchema = new mongoose.Schema({
     taskName: {type: String, required: true},
     taskDescription: {type: String},
