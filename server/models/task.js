@@ -30,8 +30,8 @@ async function getUserTask(taskName, createdBy) {
         
 }
 
-async function updateTaskDescription(id, taskDescription) {
-    const task = await Task.findByIdAndUpdate(id, {$set: {taskDescription: taskDescription}}, {returnDocument: 'after'})
+async function updateTaskName(id, taskName) {
+    const task = await Task.findByIdAndUpdate(id, {$set: {taskName: taskName}}, {returnDocument: 'after'})
   return task._doc
 }  
 
@@ -43,4 +43,4 @@ async function getAllTasks(createdBy) {
     return await Task.findById({createdBy}).exec()
 }
 
-module.exports = { createUserTask, getUserTask, updateTaskDescription, deleteTask }
+module.exports = { createUserTask, getUserTask, updateTaskName, deleteTask }

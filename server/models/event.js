@@ -34,8 +34,8 @@ async function getUserEvent(eventName, createdBy) {
     return userEvent._doc
 }
 
-async function updateEventLocation(id, eventLocation) {
-    const event = await Event.findByIdAndUpdate(id, {$set: {taskDescription: taskDescription}}, {returnDocument: 'after'})
+async function updateEventName(id, eventName) {
+    const event = await Event.findByIdAndUpdate(id, {$set: {eventName: eventName}}, {returnDocument: 'after'})
     return event._doc
 }
 
@@ -48,7 +48,7 @@ async function getAllEvents(createdBy) {
     return allEvents._doc
 }
 
-module.exports = { createUserEvent, getUserEvent, updateEventLocation, deleteEvent }
+module.exports = { createUserEvent, getUserEvent, updateEventName, deleteEvent }
 
 //fake database
 /*const event = [
