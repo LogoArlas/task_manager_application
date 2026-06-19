@@ -37,8 +37,8 @@ async function deleteTask(id) {
   await Task.deleteOne({"_id": id})
 };
 
-async function getAllTasks(createdBy) {
+/*async function getAllTasks(createdBy) {
     return await Task.findById({createdBy}).exec()
-}
+}*/
 
 module.exports = { createUserTask, getUserTask, updateTaskName, deleteTask }
