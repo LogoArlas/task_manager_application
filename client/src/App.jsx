@@ -8,7 +8,7 @@ function App() {
     <>
       <section id="center">
         <div className="App">
-          
+          Welcome to the App.
         </div>
       </section>
     </>
