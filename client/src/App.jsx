@@ -5,14 +5,11 @@ import Navbar from './components/Navbar.jsx'
 
 function App() {
   return (
-    <>
-        <div className="App">
-          Welcome to the App.
-          <Register />
-          <Login />
-          <Navbar />
-        </div>
-    </>
+      <div className="App">
+        <Navbar />
+        <Register />
+        <Login />
+      </div>
   )
 }
 
