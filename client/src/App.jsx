@@ -12,6 +12,9 @@ function App() {
       <section id="center">
         <div className="App">
           Welcome to the App.
+          <Register />
+          <Login />
+          <Navbar />
         </div>
       </section>
     </>
