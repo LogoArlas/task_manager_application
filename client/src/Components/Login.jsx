@@ -2,7 +2,7 @@ const Login = () => {
     return(
         <div>
             <form>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
                     <input 
                     type="text" 
@@ -12,7 +12,7 @@ const Login = () => {
                     required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input 
                     type="password" 

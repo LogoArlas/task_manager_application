@@ -1,8 +1,8 @@
-Register = () => {
+const Register = () => {
     return (
         <div>
             <form>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
                     <input 
                     type="text" 
@@ -12,7 +12,7 @@ Register = () => {
                     required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input 
                     type="password" 
@@ -21,7 +21,7 @@ Register = () => {
                     required
                     />
                 </div>
-                <div class="mb-3">
+                <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input 
                     type="email" 
@@ -29,9 +29,9 @@ Register = () => {
                     id='email' 
                     aria-describedby="emailHelp"
                     />
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
-                <input type="submit" className="btn btn-primary" value="Register"/>
+                <button type="submit" className="btn btn-primary" value="Register"/>
             </form>
         </div>
     )
