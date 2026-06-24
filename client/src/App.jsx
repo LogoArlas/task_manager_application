@@ -6,7 +6,6 @@ import Navbar from './components/Navbar.jsx'
 function App() {
   return (
       <div className="App">
-        <p>Welcome to User Interface Programming</p>
         <Navbar />
         <Register />
         <Login />
