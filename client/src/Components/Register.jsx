@@ -26,7 +26,8 @@ const Register = () => {
                     <input 
                     type="email" 
                     className="form-control" 
-                    id='email' 
+                    id='email'
+                    placeholder="example@task.com" 
                     aria-describedby="emailHelp"
                     />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
