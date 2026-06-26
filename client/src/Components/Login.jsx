@@ -2,10 +2,11 @@ const Login = () => {
     return(
         <div className="container">
             <div className="row">
-                <div classname="col-mx">
+                <div className="col"></div>
+                <div classname="col">
                     <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
-                            <div className="card card-header">Login</div>
+                            <div className="card-header">Login</div>
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="username" className="form-label">Username</label>
@@ -33,6 +34,7 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
+                <div className="col"></div>
             </div>
         </div>
     )
