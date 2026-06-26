@@ -1,5 +1,6 @@
 const Login = () => {
     return(
+        <div>
         <div className="card border-secondary mb-3">
             <form>
                 <div className="mb-3">
@@ -22,7 +23,11 @@ const Login = () => {
                     />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Register"/>
+                <div id="loginHelp" className="form-text">Create an account.</div>
+                <p><a class="link-opacity-100" href="#">Register</a></p>
             </form>
+        </div>
+        <div className="card-footer text-body-secondary">Footer</div>
         </div>
     )
 }
