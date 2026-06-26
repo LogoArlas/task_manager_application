@@ -33,6 +33,8 @@ const Register = () => {
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <input type="submit" className="btn btn-primary" value="Register"/>
+                <div id="registerHelp" className="form-text">Already have an account?</div>
+                <p><a class="link-opacity-100" href="#">Login</a></p>
             </form>
         </div>
     )
