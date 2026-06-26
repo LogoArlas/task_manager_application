@@ -1,6 +1,6 @@
 const Login = () => {
     return(
-        <div>
+        <div className="card border-secondary mb-3">
             <form>
                 <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
