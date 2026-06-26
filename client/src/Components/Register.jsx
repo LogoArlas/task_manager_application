@@ -2,7 +2,8 @@ const Register = () => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-mx">
+                <div className="col"></div>
+                <div className="col">
                     <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
                             <div className="card-header">Register</div>
@@ -44,6 +45,7 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
+                <div className="col"></div>
             </div>
         </div>
     )
