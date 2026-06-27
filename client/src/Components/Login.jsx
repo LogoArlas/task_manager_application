@@ -28,7 +28,7 @@ const Login = () => {
                                     />
                                 </div>
                                 <input type="submit" className="btn btn-primary" value="Login"/>
-                                <div id="loginHelp" className="form-text">Create an account.</div>
+                                <div id="loginHelp" className="form-text">No account?</div>
                                 <p><a className="link-opacity-100" href="#">Register</a></p>
                             </form>
                         </div>
