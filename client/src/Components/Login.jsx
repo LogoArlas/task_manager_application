@@ -3,7 +3,7 @@ const Login = () => {
         <div className="container">
             <div className="row">
                 <div className="col"></div>
-                <div classname="col">
+                <div className="col">
                     <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
                             <div className="card-header">Login</div>
