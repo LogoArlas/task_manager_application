@@ -4,7 +4,7 @@ const Register = () => {
             <div className="row">
                 <div className="col"></div>
                 <div className="col">
-                    <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
                             <div className="card-header">Register</div>
                             <form>
@@ -40,7 +40,7 @@ const Register = () => {
                                 </div>
                                 <input type="submit" className="btn btn-primary" value="Register"/>
                                 <div id="registerHelp" className="form-text">Already have an account?</div>
-                                <p><a class="link-opacity-100" href="#">Login</a></p>
+                                <p><a className="link-opacity-100" href="#">Login</a></p>
                             </form>
                         </div>
                     </div>
