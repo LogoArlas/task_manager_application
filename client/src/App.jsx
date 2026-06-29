@@ -15,7 +15,7 @@ function App() {
               <Route index element={<Register />} />
               <Route path="login" element={<Login />} />
               <Route path="event" element={<Event />} />
-              <Route path="register" element={<Task />} />
+              <Route path="task" element={<Task />} />
         </Route>
       </Routes>
     </BrowserRouter>
