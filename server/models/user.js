@@ -34,14 +34,17 @@ async function login(username, password) {
     if(!user) throw Error('User not found')
 
     const isMatch = await bcrypt.compare(password, user.password)
-    if(!isMactch) throw Error('Wrong Password')
+    if(!isMatch) throw Error('Wrong Password')
 
     return user._doc
 }
 
 //UPDATE password of a user document
 async function updatePassword(id, password) {
-    const user = await User.findByIdAndUpdate(id, {$set: {password: password}}, {returnDocument: 'after'})
+    const salt = await bcrypt.genSalt(10)
+    const hashed = await bcrypt.hash(password, salt)
+
+    const user = await User.findByIdAndUpdate(id, {$set: {password: hashed}}, {returnDocument: 'after'})
     return user._doc
 }
 
