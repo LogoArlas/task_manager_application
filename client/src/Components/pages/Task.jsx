@@ -17,12 +17,12 @@ const Task = () => {
             createdBy
         },
         "POST"
-    )
-    .then((data) => {
-        console.log(data)
-    })
-    .catch((error) => {
-        console.log(`Error! ${error.message}`)
+        )
+        .then((data) => {
+            console.log(data)
+        })
+        .catch((error) => {
+            console.log(`Error! ${error.message}`)
         })
     }
 
