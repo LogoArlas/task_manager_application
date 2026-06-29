@@ -1,31 +1,30 @@
 import { fetchData } from "../../index.jsx"
-import useState from "react"
+import { useState } from "react"
 
 const Event = () => {
-
-const [event, setEvent] = useState({
-    eventName: '',
-    eventDate: '',
-    eventTime: '',
-    eventLocation: '',
-    eventDescription: '',
-    createdBy: ''
-})
-const {eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy} = event
-const onChange = (e) => setEvent({event, [e.target.name]: e.target.value})
-const onSubmit = (e) => {
-    e.preventDefault()
-    fetchData('event/createUserEvent', {
-        eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy
-    },
-    "POST"
-    )
-    .then((data) => {
-        if(!data.message) {
-            console.log(data)
-        }
+    const [event, setEvent] = useState({
+        eventName: '',
+        eventDate: '',
+        eventTime: '',
+        eventLocation: '',
+        eventDescription: '',
+        createdBy: ''
     })
-}
+    const {eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy} = event
+    const onChange = (e) => setEvent({event, [e.target.name]: e.target.value})
+    const onSubmit = (e) => {
+        e.preventDefault()
+        fetchData('event/createUserEvent', {
+            eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy
+        },
+        "POST"
+        )
+        .then((data) => {
+            if(!data.message) {
+                console.log(data)
+            }
+        })
+    }
     return(
         <div className="container">
             <div className="row">
