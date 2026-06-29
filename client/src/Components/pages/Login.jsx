@@ -1,9 +1,9 @@
 import { fetchData } from "../../index.jsx"
-import { Output, Link } from "react-router-dom"
-import useState from "react"
+import { Outlet, Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 const Login = () => {
-
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         username: '',
         password: ''
@@ -17,13 +17,14 @@ const Login = () => {
             password
         },
         "POST"
-    )
-    .then((data) => {
-        console.log(data)
-    })
-    .catch((error) => {
-        console.log(`Error! ${error.message}`)
-    })
+        )
+        .then((data) => {
+            navigate('/event')
+            console.log(data)
+        })
+        .catch((error) => {
+            console.log(`Error! ${error.message}`)
+        })
     }
     return(
         <div className="container">
