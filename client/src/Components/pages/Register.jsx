@@ -1,34 +1,36 @@
 import { fetchData } from "../../index.jsx"
-import useState from "react"
-import { Outlet, Link } from "react-router-dom"
+import { useState } from "react"
+import { Outlet, Link, useNavigate } from "react-router-dom"
 
 const Register = () => {
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         username: '',
         password: '',
         email: ''
     })
 
-const { username, password, email } = user
-const onChnage = (e) => setUser({...user, [e.target.name]: e.target.value})
+    const { username, password, email } = user
+    const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
 
-const onSubmit = (e) => {
-    e.preventDefault()
-    fetchData('/user/register', {
-        username,
-        password,
-        email
-    },
-    "POST"
-    )
-    .then((data) => {
-        if(!data.message) {
-            console.log(data)
-        }
-    })
-    .catch((error) => {
-        console.log(`Error! ${error.message}`)
-    })
+    const onSubmit = (e) => {
+        e.preventDefault()
+        fetchData('/user/register', {
+            username,
+            password,
+            email
+        },
+        "POST"
+        )
+        .then((data) => {
+            if(!data.message) {
+                navigate('/event')
+                console.log(data)
+            }
+        })
+        .catch((error) => {
+            console.log(`Error! ${error.message}`)
+        })
     }
     return (
         <div className="container">
@@ -79,8 +81,9 @@ const onSubmit = (e) => {
                                 </div>
                                 <input type="submit" className="btn btn-primary" value="Register"/>
                                 <div id="registerHelp" className="form-text">Already have an account?</div>
-                                <p><a className="link-opacity-100" href="#">Login</a></p>
+                                <p><Link className="link-opacity-100" to="/login">Login</Link></p>
                             </form>
+                            <Outlet />
                         </div>
                     </div>
                 </div>
