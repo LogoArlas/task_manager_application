@@ -1,4 +1,30 @@
+import { fetchData } from "../../index.jsx"
+import { Output, Link } from "react-router-dom"
+import useState from "react"
+
 const Login = () => {
+
+    const [user, setUser] = useState({
+        username: '',
+        password: ''
+    })
+    const { username, password } = user
+    const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
+    const onSubmit = (e) => {
+        e.preventDefault()
+        fetchData('/user/login', {
+            username,
+            password
+        },
+        "POST"
+    )
+    .then((data) => {
+        console.log(data)
+    })
+    .catch((error) => {
+        console.log(`Error! ${error.message}`)
+    })
+    }
     return(
         <div className="container">
             <div className="row">
@@ -7,7 +33,7 @@ const Login = () => {
                     <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
                             <div className="card-header">Login</div>
-                            <form>
+                            <form onSubmit={onSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="username" className="form-label">Username</label>
                                     <input 
@@ -15,6 +41,8 @@ const Login = () => {
                                     className="form-control" 
                                     id="username" 
                                     name='username'
+                                    onChange={onChange}
+                                    value={username}
                                     required
                                     />
                                 </div>
@@ -24,13 +52,17 @@ const Login = () => {
                                     type="password" 
                                     className="form-control" 
                                     id='password'
+                                    name='password'
+                                    onChange={onChange}
+                                    value={password}
                                     required
                                     />
                                 </div>
                                 <input type="submit" className="btn btn-primary" value="Login"/>
                                 <div id="loginHelp" className="form-text">No account?</div>
-                                <p><a className="link-opacity-100" href="#">Register</a></p>
+                                <p><Link className="link-opacity-100" to="/register">Register</Link></p>
                             </form>
+                            <Outlet />
                         </div>
                     </div>
                 </div>

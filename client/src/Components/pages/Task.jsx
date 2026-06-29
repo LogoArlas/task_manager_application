@@ -1,17 +1,45 @@
 import {useState} from 'react';
+import {fetchData} from "../../index.jsx"
 
 const Task = () => {
+    const [task, setTask] = useState({
+        taskName,
+        taskDescription,
+        createdBy
+    })
+    const {taskName, taskDescription, createdBy} = task
+    const onChange = (e) => setTask({task, [e.target.name]: e.target.value})
+    const onSubmit =(e) => {
+        e.preventDefault()
+        fetchData('/task/createUserTask', {
+            taskName,
+            taskDescription,
+            createdBy
+        },
+        "POST"
+    )
+    .then((data) => {
+        console.log(data)
+    })
+    .catch((error) => {
+        console.log(`Error! ${error.message}`)
+        })
+    }
+
     return(
         <div className="container">
             <div className="row">
                 <div className="col-3">
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className="mb-3">
                             <label htmlFor="taskName" className="form-label">Task Name</label>
                             <input 
                             type="text" 
                             className="form-control" 
                             id="taskName"
+                            name='taskName'
+                            onChange={onChange}
+                            value={taskName}
                             required
                             />
                         </div>
@@ -20,7 +48,10 @@ const Task = () => {
                             <textarea 
                             className="form-control" 
                             id="taskDescription" 
-                            rows="3">
+                            rows="3"
+                            name='taskDescription'
+                            onChange={onChange}
+                            value={taskDescription}>
                             </textarea>
                         </div>
                         <button type="submit" className="btn btn-success">Add</button>

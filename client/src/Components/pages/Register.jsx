@@ -1,4 +1,35 @@
+import { fetchData } from "../../index.jsx"
+import useState from "react"
+import { Outlet, Link } from "react-router-dom"
+
 const Register = () => {
+    const [user, setUser] = useState({
+        username: '',
+        password: '',
+        email: ''
+    })
+
+const { username, password, email } = user
+const onChnage = (e) => setUser({...user, [e.target.name]: e.target.value})
+
+const onSubmit = (e) => {
+    e.preventDefault()
+    fetchData('/user/register', {
+        username,
+        password,
+        email
+    },
+    "POST"
+    )
+    .then((data) => {
+        if(!data.message) {
+            console.log(data)
+        }
+    })
+    .catch((error) => {
+        console.log(`Error! ${error.message}`)
+    })
+    }
     return (
         <div className="container">
             <div className="row">
@@ -7,7 +38,7 @@ const Register = () => {
                     <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card border-secondary p-3 mb-3">
                             <div className="card-header">Register</div>
-                            <form>
+                            <form onSubmit={onSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="username" className="form-label">Username</label>
                                     <input 
@@ -15,6 +46,8 @@ const Register = () => {
                                     className="form-control" 
                                     id="username" 
                                     name='username'
+                                    onChange={onChange}
+                                    value={username}
                                     required
                                     />
                                 </div>
@@ -24,6 +57,9 @@ const Register = () => {
                                     type="password" 
                                     className="form-control" 
                                     id='password'
+                                    name='password'
+                                    onChange={onChange}
+                                    value={password}
                                     required
                                     />
                                 </div>
@@ -33,6 +69,9 @@ const Register = () => {
                                     type="email" 
                                     className="form-control" 
                                     id='email'
+                                    name='email'
+                                    onChange={onChange}
+                                    value={email}
                                     placeholder="example@task.com" 
                                     aria-describedby="emailHelp"
                                     />
