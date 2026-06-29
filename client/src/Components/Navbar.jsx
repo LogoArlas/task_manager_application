@@ -1,3 +1,5 @@
+import {Outlet, Link} from "react-router-dom"
+
 const Navbar = () => {
     return(
         <div>
@@ -10,18 +12,18 @@ const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Register</a>
+                                <Link className="nav-link" to="/register" aria-current="page">Register</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Login</a>
+                                <Link className="nav-link" to="/login">Login</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Events</a></li>
-                                    <li><a className="dropdown-item" href="#">Tasks</a></li>
+                                    <li><Link className="dropdown-item" to="/event">Events</Link></li>
+                                    <li><Link className="dropdown-item" to="/task">Tasks</Link></li>
                                     <li><hr className="dropdown-divider"/></li>
                                     <li><a className="dropdown-item" href="#">About</a></li>
                                 </ul>
@@ -34,6 +36,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
+            <Outlet />
         </div>
     )
 }
