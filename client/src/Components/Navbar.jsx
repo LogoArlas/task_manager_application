@@ -3,6 +3,7 @@ import { useContext, Fragment } from "react"
 import UserContext from '../context/userContext.jsx'
 
 const Navbar = () => {
+    
     const { user } = useContext(UserContext)
 
     const authenticated = (
@@ -12,7 +13,7 @@ const Navbar = () => {
     )
     const guest = (
         <Fragment>
-            <p>Welcome</p>
+            <p></p>
         </Fragment>
     )
     return(
