@@ -7,12 +7,6 @@ const Register = () => {
     const navigate = useNavigate()
     const {user, updateUser} = useContext(UserContext)
 
-    const [user, setUser] = useState({
-        username: '',
-        password: '',
-        email: ''
-    })
-
     const { username, password, email } = user
     const onChange = (e) => updateUser(e.target.name, e.target.value)
 

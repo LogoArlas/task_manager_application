@@ -8,12 +8,8 @@ const Login = () => {
     const navigate = useNavigate()
     const {user, updateUser} = useContext(UserContext)
 
-    const [user, setUser] = useState({
-        username: '',
-        password: ''
-    })
-    const { username, password } = user
-    
+    const { username, password, email } = user
+
     const onChange = (e) => updateUser(e.target.name, e.target.value)
     const onSubmit = (e) => {
         e.preventDefault()
