@@ -1,15 +1,20 @@
 import { fetchData } from "../../index.jsx"
 import { Outlet, Link, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState, useContext, Fragment } from "react"
+import UserContext from '../../context/userContext.jsx'
 
 const Login = () => {
+    
     const navigate = useNavigate()
+    const {user, updateUser} = useContext(UserContext)
+
     const [user, setUser] = useState({
         username: '',
         password: ''
     })
     const { username, password } = user
-    const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
+    
+    const onChange = (e) => updateUser(e.target.name, e.target.value)
     const onSubmit = (e) => {
         e.preventDefault()
         fetchData('/user/login', {
@@ -19,13 +24,17 @@ const Login = () => {
         "POST"
         )
         .then((data) => {
+            
             navigate('/profile')
             console.log(data)
+            console.log(data.username)
+            console.log(data._id)
         })
         .catch((error) => {
             console.log(`Error! ${error.message}`)
         })
     }
+
     return(
         <div className="container">
             <div className="row">
