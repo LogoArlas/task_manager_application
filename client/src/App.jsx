@@ -6,7 +6,7 @@ import Navbar from './components/Navbar.jsx'
 import Event from './components/pages/Event.jsx'
 import Task from './components/pages/Task.jsx'
 import Profile from './components/pages/Profile.jsx'
-import UserProvider from './context.user/userContext'
+import { UserProvider } from './context/userContext.jsx'
 
 function App() {
   return (
@@ -20,10 +20,10 @@ function App() {
                 <Route path="/profile" element={ <Profile /> } />
                 <Route path="/event" element={ <Event /> } />
                 <Route path="/task" element={ <Task /> } />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </UserProvider>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </div>
   )
 }
