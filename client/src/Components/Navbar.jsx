@@ -5,16 +5,16 @@ import UserContext from '../context/userContext.jsx'
 const Navbar = () => {
     
     const { user } = useContext(UserContext)
-    console.log(user)
+    console.log(user.username)
 
     const authenticated = (
         <Fragment>
-            <div className="nav-item">Welcome {user.username} </div>
+            <div className="nav-item">Welcome {user.username}</div>
         </Fragment>
     )
     const guest = (
         <Fragment>
-            <p></p>
+            <div className="nav-item">Not Logged in</div>
         </Fragment>
     )
     return(
@@ -33,20 +33,12 @@ const Navbar = () => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login">Login</Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Profile
-                                </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><Link className="dropdown-item" to="/event">Events</Link></li>
-                                    <li><Link className="dropdown-item" to="/task">Tasks</Link></li>
-                                    <li><hr className="dropdown-divider"/></li>
-                                    <li><Link className="dropdown-item" to="/profile">About</Link></li>
-                                </ul>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">Profile</Link>
                             </li>
                         </ul>
                         <div className="d-flex">
-                            { user.authenticated ? authenticated: authenticated }
+                            { user.authenticated ? authenticated: guest }
                         </div>
                     </div>
                 </div>
