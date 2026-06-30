@@ -46,7 +46,7 @@ const Task = () => {
                                     required
                                     />
                                 </div>
-                                <div class="mb-3">
+                                <div className="mb-3">
                                     <label htmlFor="taskDescription" className="form-label">Description</label>
                                     <textarea 
                                     className="form-control" 
