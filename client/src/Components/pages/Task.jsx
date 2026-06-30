@@ -1,11 +1,11 @@
-import {useState} from 'react';
-import {fetchData} from "../../index.jsx"
+import { useState } from 'react';
+import { fetchData } from "../../index.jsx"
 
 const Task = () => {
     const [task, setTask] = useState({
-        taskName,
-        taskDescription,
-        createdBy
+        taskName:"",
+        taskDescription:"",
+        createdBy:""
     })
     const {taskName, taskDescription, createdBy} = task
     const onChange = (e) => setTask({task, [e.target.name]: e.target.value})
