@@ -24,7 +24,7 @@ const Register = () => {
         )
         .then((data) => {
             if(!data.message) {
-                navigate('/event')
+                navigate('/profile')
                 console.log(data)
             }
         })

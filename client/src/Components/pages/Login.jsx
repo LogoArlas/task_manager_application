@@ -19,7 +19,7 @@ const Login = () => {
         "POST"
         )
         .then((data) => {
-            navigate('/event')
+            navigate('/profile')
             console.log(data)
         })
         .catch((error) => {
