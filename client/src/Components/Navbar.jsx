@@ -1,10 +1,25 @@
 import { Outlet, Link } from "react-router-dom"
+import { useContext, Fragment } from "react"
+import UserContext from '../context/userContext.jsx'
 
 const Navbar = () => {
+    const { user } = useContext(UserContext)
+
+    const authenticated = (
+        <Fragment>
+            <p>Welcome {user.username} </p>
+        </Fragment>
+    )
+    const guest = (
+        <Fragment>
+            <p>Welcome</p>
+        </Fragment>
+    )
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
+                    { user.authenticated ? authenticated: guest }
                     <div className="navbar-brand">Task Manager</div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
