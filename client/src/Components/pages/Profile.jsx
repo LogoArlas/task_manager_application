@@ -1,10 +1,10 @@
-import { Login } from './Login.jsx'
 import { useState } from "react"
+import Login from "./Login.jsx"
 
 const Profile = () => {
     return (
-        <div className="container">
-            <p>Welcome, {user.username}</p>
+        <div className="container-fluid">
+            <p> Welcome, </p>
         </div>
     )
 }
