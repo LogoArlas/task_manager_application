@@ -3,12 +3,12 @@ import { useState } from "react"
 
 const Event = () => {
     const [event, setEvent] = useState({
-        eventName: '',
-        eventDate: '',
-        eventTime: '',
-        eventLocation: '',
-        eventDescription: '',
-        createdBy: ''
+        eventName: "",
+        eventDate: "",
+        eventTime: "",
+        eventLocation: "",
+        eventDescription: "",
+        createdBy: ""
     })
     const {eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy} = event
     const onChange = (e) => setEvent({event, [e.target.name]: e.target.value})
