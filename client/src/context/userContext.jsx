@@ -4,11 +4,10 @@ const UserContext = createContext()
 
 export function UserProvider({children}) {
 
-    const navigate = useNavigate()
     const [user, setUser] = useState({
-        username: '',
-        password: '',
-        email: '',
+        username: "",
+        password: "",
+        email: "",
         authenticated: false
     })
 
