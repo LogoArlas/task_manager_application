@@ -14,10 +14,10 @@ function App() {
           <Routes>
             <Route path="/" element={ <Navbar /> } >
               <Route index element={ <Register /> } />
-              <Route path="login" element={ <Login /> } />
-              <Route path="profile" element={ <Profile /> } />
-              <Route path="event" element={ <Event /> } />
-              <Route path="task" element={ <Task /> } />
+              <Route path="/login" element={ <Login /> } />
+              <Route path="/profile" element={ <Profile /> } />
+              <Route path="/event" element={ <Event /> } />
+              <Route path="/task" element={ <Task /> } />
         </Route>
       </Routes>
     </BrowserRouter>
