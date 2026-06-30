@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchData } from "../../index.jsx"
+import { fetchData } from "../index.jsx"
 
 const Task = () => {
     const [task, setTask] = useState({

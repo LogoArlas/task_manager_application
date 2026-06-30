@@ -1,4 +1,4 @@
-import { fetchData } from "../../index.jsx"
+import { fetchData } from "../index.jsx"
 import { useState } from "react"
 
 const Event = () => {
