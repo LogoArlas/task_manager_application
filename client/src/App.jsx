@@ -5,6 +5,7 @@ import Login from './components/pages/Login.jsx'
 import Navbar from './components/Navbar.jsx'
 import Event from './components/pages/Event.jsx'
 import Task from './components/pages/Task.jsx'
+import Profile from './components/pages/Profile.jsx'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={ <Navbar /> } >
               <Route index element={ <Register /> } />
               <Route path="login" element={ <Login /> } />
+              <Route path="profile" element={ <Profile /> } />
               <Route path="event" element={ <Event /> } />
               <Route path="task" element={ <Task /> } />
         </Route>
