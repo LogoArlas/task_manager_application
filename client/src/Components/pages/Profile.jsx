@@ -4,7 +4,7 @@ import Login from "./Login.jsx"
 const Profile = () => {
     return (
         <div className="container-fluid">
-            <p> Welcome, </p>
+            <p> Profile Page</p>
         </div>
     )
 }
