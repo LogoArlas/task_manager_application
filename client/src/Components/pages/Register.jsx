@@ -78,7 +78,7 @@ const Register = () => {
                                     />
                                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                                 </div>
-                                <input type="submit" className="btn btn-primary" name="register-button" value="Register"/>
+                                <button type="submit" className="btn btn-primary">Register</button>
                                 <div id="registerHelp" className="form-text">Already have an account?</div>
                                 <p><Link className="link-opacity-100" to="/login">Login</Link></p>
                             </form>
