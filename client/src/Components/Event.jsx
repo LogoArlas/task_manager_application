@@ -78,14 +78,14 @@ const Event = () => {
                                         value={eventLocation}
                                         />
                                     </div>
-                                    <div class="mb-3">
+                                    <div className="mb-3">
                                         <label htmlFor="eventDescription" className="form-label">Description</label>
                                         <textarea 
                                         className="form-control" 
                                         id="eventDescription" 
                                         rows="3"
                                         name='eventDescription'
-                                        onChnage={onChange}
+                                        onChange={onChange}
                                         value={eventDescription}>
                                         </textarea>
                                     </div>
