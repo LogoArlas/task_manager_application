@@ -7,6 +7,7 @@ import Event from './components/Event.jsx'
 import Task from './components/Task.jsx'
 import Profile from './components/pages/Profile.jsx'
 import { UserProvider } from './context/userContext.jsx'
+import Logout from './components/Logout.jsx'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/profile" element={ <Profile /> } />
                 <Route path="/event" element={ <Event /> } />
                 <Route path="/task" element={ <Task /> } />
+                <Route path="/logout" element={ <Logout /> } />
             </Route>
           </Routes>
         </BrowserRouter>
