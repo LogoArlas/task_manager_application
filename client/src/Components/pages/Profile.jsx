@@ -7,6 +7,7 @@ import Logout from '../Logout.jsx'
 
 const Profile = () => {
     const { user } = useContext(UserContext)
+    console.log(user)
     return (
         <div className="container-fluid">
             <p> Profile Page { user.username }</p>
