@@ -3,6 +3,7 @@ import { useState } from "react"
 
 const Event = () => {
     const [event, setEvent] = useState({
+        eventId: "",
         eventName: "",
         eventDate: "",
         eventTime: "",
@@ -10,7 +11,7 @@ const Event = () => {
         eventDescription: "",
         createdBy: ""
     })
-    const {eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy} = event
+    const {eventId, eventName, eventDate, eventTime, eventLocation, eventDescription, createdBy} = event
     const onChange = (e) => setEvent({event, [e.target.name]: e.target.value})
     const onSubmit = (e) => {
         e.preventDefault()
@@ -22,6 +23,7 @@ const Event = () => {
         .then((data) => {
             if(!data.message) {
                 console.log(data)
+                setEvent(data)
             }
         })
     }
