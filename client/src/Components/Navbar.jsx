@@ -11,14 +11,17 @@ const Navbar = () => {
         <Fragment>
              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Logout />
+                                <div className="navbar-text">
+                                Welcome {user.username}
+                                </div>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/profile">Profile</Link>
                             </li>
                         </ul>
                         <div className="d-flex">
-            <div className="nav-item">Welcome {user.username}</div></div>
+                            <Logout/>
+                        </div>
         </Fragment>
     )
     const guest = (
