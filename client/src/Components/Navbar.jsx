@@ -1,20 +1,41 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet, Link, useNavigate } from "react-router-dom"
 import { useContext, Fragment } from "react"
 import UserContext from '../context/userContext.jsx'
+import Logout from './Logout.jsx'
 
 const Navbar = () => {
-    
+    const navigate = useNavigate()
     const { user } = useContext(UserContext)
-    console.log(user.username)
 
     const authenticated = (
         <Fragment>
-            <div className="nav-item">Welcome {user.username}</div>
+             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Logout />
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">Profile</Link>
+                            </li>
+                        </ul>
+                        <div className="d-flex">
+            <div className="nav-item">Welcome {user.username}</div></div>
         </Fragment>
     )
     const guest = (
         <Fragment>
-            <div className="nav-item">Not Logged in</div>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">Register</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login">Login</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/profile">Profile</Link>
+                            </li>
+                        </ul>
+                 <div className="d-flex">      
+            <div className="nav-item">Not Logged in</div></div>
         </Fragment>
     )
     return(
@@ -26,20 +47,7 @@ const Navbar = () => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Register</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login">Login</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/profile">Profile</Link>
-                            </li>
-                        </ul>
-                        <div className="d-flex">
-                            { user.authenticated ? authenticated: guest }
-                        </div>
+                        { user.authenticated ? authenticated: guest }
                     </div>
                 </div>
             </nav>
