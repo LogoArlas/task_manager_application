@@ -1,6 +1,6 @@
 import { fetchData } from "../../index.jsx"
 import { Outlet, Link, useNavigate } from "react-router-dom"
-import { useState, useContext, Fragment } from "react"
+import { useContext, Fragment } from "react"
 import UserContext from '../../context/userContext.jsx'
 
 const Login = () => {
@@ -8,9 +8,10 @@ const Login = () => {
     const navigate = useNavigate()
     const {user, updateUser} = useContext(UserContext)
 
-    const { username, password, email } = user
+    const { username, password } = user
 
     const onChange = (e) => updateUser(e.target.name, e.target.value)
+    
     const onSubmit = (e) => {
         e.preventDefault()
         fetchData('/user/login', {
@@ -20,16 +21,17 @@ const Login = () => {
         "POST"
         )
         .then((data) => {
-            
+            updateUser("authenticated", true)
             navigate('/profile')
-            console.log(data)
             console.log(data.username)
             console.log(data._id)
+            
         })
         .catch((error) => {
             console.log(`Error! ${error.message}`)
         })
     }
+    console.log(user.authenticated)
 
     return(
         <div className="container">
@@ -66,7 +68,7 @@ const Login = () => {
                                 </div>
                                 <input type="submit" className="btn btn-primary" value="Login"/>
                                 <div id="loginHelp" className="form-text">No account?</div>
-                                <p><Link className="link-opacity-100" to="/register">Register</Link></p>
+                                <p><Link className="link-opacity-100" to="/">Register</Link></p>
                             </form>
                             <Outlet />
                         </div>

@@ -1,10 +1,11 @@
 import { fetchData } from "../../index.jsx"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { Outlet, Link, useNavigate } from "react-router-dom"
 import UserContext from '../../context/userContext.jsx'
 
 const Register = () => {
     const navigate = useNavigate()
+    /*const [user, setUser ] = useContext(UserContext)*/
     const {user, updateUser} = useContext(UserContext)
 
     const { username, password, email } = user
@@ -21,6 +22,7 @@ const Register = () => {
         )
         .then((data) => {
             if(!data.message) {
+                updateUser("authenticated", true)
                 navigate('/profile')
                 console.log(data)
             }
@@ -76,7 +78,7 @@ const Register = () => {
                                     />
                                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                                 </div>
-                                <input type="submit" className="btn btn-primary" value="Register"/>
+                                <input type="submit" className="btn btn-primary" name="register-button" value="Register"/>
                                 <div id="registerHelp" className="form-text">Already have an account?</div>
                                 <p><Link className="link-opacity-100" to="/login">Login</Link></p>
                             </form>
