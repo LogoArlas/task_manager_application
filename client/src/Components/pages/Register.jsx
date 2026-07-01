@@ -5,7 +5,7 @@ import UserContext from '../../context/userContext.jsx'
 
 const Register = () => {
     const navigate = useNavigate()
-    /*const [user, setUser ] = useContext(UserContext)*/
+    
     const {user, updateUser} = useContext(UserContext)
 
     const { username, password, email } = user
