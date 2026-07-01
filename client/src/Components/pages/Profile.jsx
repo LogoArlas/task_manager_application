@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useContext } from "react"
 import Login from "./Login.jsx"
 import Event from '../Event.jsx'
 import Task from '../Task.jsx'
+import UserContext from '../../context/userContext.jsx'
+import Logout from '../Logout.jsx'
 
 const Profile = () => {
+    const { user } = useContext(UserContext)
     return (
         <div className="container-fluid">
-            <p> Profile Page</p>
+            <p> Profile Page { user.username }</p>
             <Event />
             <Task />
         </div>
